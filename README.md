@@ -11,7 +11,7 @@ Siden er bevidst almindelig, statisk HTML og CSS:
 - ingen database eller serverkode
 - ingen JavaScript, tracking, cookies eller eksterne fonte
 - ingen obligatoriske pakker eller build-trin
-- GitHub Actions publicerer indholdet ved hvert push til `main`
+- GitHub Pages publicerer direkte fra roden af `main` ved hvert push
 - alle produktionsfiler, billeder, metadata og deployment-filer ligger i repositoryet
 
 Det gør siden hurtig, nem at gennemgå og flytbar til enhver statisk webhost. Filen `.nojekyll` sørger for, at GitHub Pages serverer filerne direkte.
@@ -74,17 +74,24 @@ Gennemse desuden siden manuelt på smal og bred skærm samt med tastaturet.
 
 ## Deploy med GitHub Pages
 
-Workflowet `.github/workflows/pages.yml` kører automatisk ved push til `main` og kan også startes manuelt under **Actions → Deploy static site to GitHub Pages → Run workflow**. Det uploader repositoryets statiske filer og publicerer dem via GitHub Pages.
+Repositoryet bruger GitHub Pages’ indbyggede branch-deployment, som er den simpleste løsning til denne statiske side. Pages er konfigureret med **Deploy from a branch**, branch **`main`** og mappe **`/(root)`**. Ved hvert push til `main` publicerer GitHub automatisk den nye version.
 
-Repositoryets Pages-indstilling skal have **Source: GitHub Actions**. Første opsætning:
+Filen `.nojekyll` sørger for, at indholdet serveres direkte uden Jekyll-behandling. Deployment kræver ingen secrets, tokens i repositoryet eller tredjepartstjenester.
 
-1. Gå til **Settings → Pages**.
-2. Vælg **GitHub Actions** under *Build and deployment / Source*.
-3. Kontrollér det seneste workflow under **Actions**.
-4. Angiv `xn--suvern-tua.dk` som custom domain, hvis GitHub ikke allerede har læst `CNAME`.
-5. Slå **Enforce HTTPS** til, når DNS-kontrollen er færdig og certifikatet er udstedt.
+Kontrollér opsætningen under **Settings → Pages → Build and deployment**:
 
-Deployment kræver ingen secrets. GitHubs kortlivede `GITHUB_TOKEN` oprettes automatisk til workflowet og gemmes ikke i repositoryet.
+1. *Source* skal være **Deploy from a branch**.
+2. *Branch* skal være **main** og **/(root)**.
+3. Custom domain skal være **`xn--suvern-tua.dk`**.
+4. Slå **Enforce HTTPS** til, når DNS-kontrollen er færdig og certifikatet er udstedt.
+
+Deploymentstatus kan ses under repositoryets **Deployments** eller **Actions**. En almindelig opdatering er:
+
+```bash
+git add .
+git commit -m "Beskriv ændringen"
+git push origin main
+```
 
 ## Domain og DNS
 
@@ -132,7 +139,7 @@ git clone --mirror https://github.com/suveraenmand-design/suveraen.dk.git suvera
 
 ## Recovery og flytning
 
-På en ny maskine klones repositoryet normalt, hvorefter `python3 -m http.server 4000` giver en lokal kopi. Hvis GitHub Pages skal gendannes, aktivér **Settings → Pages → GitHub Actions** og kør workflowet igen.
+På en ny maskine klones repositoryet normalt, hvorefter `python3 -m http.server 4000` giver en lokal kopi. Hvis GitHub Pages skal gendannes, vælg **Settings → Pages → Deploy from a branch**, derefter **main** og **/(root)**.
 
 Siden kan også flyttes til Netlify, Cloudflare Pages, S3 eller en almindelig webserver ved at publicere repositoryets rod. Ved et nyt domæne skal canonical/OG-URLs, `robots.txt`, `sitemap.xml` og `CNAME` opdateres.
 
