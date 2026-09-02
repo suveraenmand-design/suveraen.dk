@@ -1,0 +1,20 @@
+# Generated output
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/
+
+# Local configuration and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
