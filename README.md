@@ -104,6 +104,8 @@ Opret disse records hos DNS-udbyderen (udbyderens rodnavn kan vises som `@` elle
 | AAAA | `@` | `2606:50c0:8003::153` |
 | CNAME | `www` | `suveraenmand-design.github.io.` |
 
+Hvis DNS-udbyderen kræver det fulde IDN-hostname i stedet for `@`, bruges `xn--suvern-tua.dk` for apex og `www.xn--suvern-tua.dk` for `www`.
+
 Fjern modstridende A/AAAA/CNAME-records for `@` og `www`. Bevar naturligvis MX/TXT-records, der bruges til mail eller domæneverifikation. En TTL på 3600 sekunder er passende. GitHub anbefaler både apex-records og `www`-CNAME; når apex er custom domain, omdirigerer Pages normalt `www` til apex.
 
 Efter DNS-propagation:
