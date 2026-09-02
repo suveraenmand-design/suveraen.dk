@@ -39,9 +39,10 @@ Der skal ikke installeres Ruby, Node.js eller andre dependencies. Stop serveren 
 | Læseliste, noter og kildelinks | `laeseliste/index.html` |
 | Ressourcer | `ressourcer/index.html` |
 | Farver, typografi og responsivt design | `assets/css/main.css` |
-| Bogforside | `assets/images/book-cover.webp` |
+| Bogforside | `assets/images/book-cover.webp` og mobilvariant `book-cover-640.webp` |
 | Social delingsgrafik | `assets/images/social-card.webp` |
-| Leviathan-baggrund | `assets/images/leviathan-bg.webp` |
+| Brugerleveret baggrund | `assets/images/background.webp` og `background-mobile.webp` |
+| Tidligere Leviathan-afledning | `assets/images/leviathan-bg.webp` |
 | Favicon | `assets/images/favicon.svg` |
 | Titler, descriptions, canonical og Open Graph | `<head>` i hver HTML-fil |
 | Søgemaskiners sider | `sitemap.xml` og `robots.txt` |
@@ -49,13 +50,13 @@ Der skal ikke installeres Ruby, Node.js eller andre dependencies. Stop serveren 
 
 ### Bogforside og baggrund
 
-Den officielle forside er leveret og godkendt til projektet af bogprojektets ejer. Den weboptimerede fil ligger som `assets/images/book-cover.webp`. En beskåret, monokrom afledning af Leviathan-motivet ligger i `assets/images/leviathan-bg.webp` og bruges som diskret hero- og sektionsbaggrund.
+De originale, godkendte kildebilleder ligger som `assets/images/9788785340085.jpg` og `assets/images/background.png`. Produktionssiden bruger weboptimerede varianter: `book-cover.webp`/`book-cover-640.webp` og `background.webp`/`background-mobile.webp`. Den tidligere monokrome Leviathan-afledning bevares som et lokalt designasset.
 
 Ved en senere udskiftning:
 
-1. eksportér den godkendte forside som WebP i omtrent samme billedforhold,
-2. optimér filen og erstat `assets/images/book-cover.webp`,
-3. opdatér eventuelt `assets/images/leviathan-bg.webp`,
+1. erstat de godkendte kildefiler `9788785340085.jpg` og/eller `background.png`,
+2. generér og optimér begge desktop- og mobilvarianter i WebP,
+3. opdatér eventuelt socialkortet og `leviathan-bg.webp`,
 4. ret filernes mål og billedets `alt`-tekst i `index.html`,
 5. commit og push ændringen.
 

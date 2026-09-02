@@ -436,3 +436,131 @@ p { margin-block: 0 1.2em; }
 @media print {
   .hero-leviathan, .author-section { background: none; }
 }
+
+/* User-supplied full-page background and mobile-first refinements */
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(rgba(18,17,15,.965), rgba(18,17,15,.985)),
+    url('/assets/images/background.webp');
+  background-position: center top;
+  background-size: min(100rem, 125vw) auto;
+  background-repeat: repeat-y;
+  background-attachment: scroll;
+}
+.section, .cta-band, .site-footer { background-color: rgba(18,17,15,.93); }
+.section-soft { background-color: rgba(25,23,20,.95); }
+.hero-leviathan {
+  background:
+    linear-gradient(90deg, rgba(18,17,15,.99) 0%, rgba(18,17,15,.95) 43%, rgba(18,17,15,.66) 100%),
+    url('/assets/images/background.webp') right 31% center / min(66rem, 76vw) auto no-repeat;
+}
+.hero-leviathan::before {
+  background:
+    linear-gradient(180deg, var(--paper) 0, transparent 18%, transparent 76%, var(--paper) 100%),
+    repeating-linear-gradient(0deg, transparent 0 5px, rgba(241,236,226,.014) 5px 6px);
+}
+.author-section {
+  background:
+    linear-gradient(90deg, rgba(18,17,15,.99) 0%, rgba(18,17,15,.93) 58%, rgba(18,17,15,.84) 100%),
+    url('/assets/images/background.webp') right 16% center / 52rem auto no-repeat;
+}
+.book-figure picture { display: block; }
+.book-cover { height: auto; }
+
+@media (max-width: 860px) {
+  .site-header { position: relative; backdrop-filter: none; }
+  .nav-shell { width: 100%; padding: .85rem 0 0; gap: .55rem; }
+  .brand { margin-left: 1rem; }
+  .nav-list {
+    width: 100%;
+    justify-content: flex-start;
+    gap: .25rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    padding: .1rem 1rem .7rem;
+    scroll-padding-inline: 1rem;
+  }
+  .nav-list a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    padding-inline: .7rem;
+    white-space: nowrap;
+  }
+  .nav-list .buy-link { min-height: 2.75rem; padding-inline: .8rem; }
+  .hero-leviathan {
+    background:
+      linear-gradient(180deg, rgba(18,17,15,.985) 0%, rgba(18,17,15,.94) 48%, rgba(18,17,15,.75) 100%),
+      url('/assets/images/background-mobile.webp') center bottom / 100% auto no-repeat;
+  }
+  .hero-grid { gap: 3.4rem; }
+  .book-figure { width: min(72vw, 20rem); }
+  .book-figure::before { right: -1.25rem; }
+}
+
+@media (max-width: 600px) {
+  html { scroll-padding-top: 1rem; }
+  body {
+    font-size: 1rem;
+    line-height: 1.68;
+    background-image:
+      linear-gradient(rgba(18,17,15,.975), rgba(18,17,15,.99)),
+      url('/assets/images/background-mobile.webp');
+    background-size: 100% auto;
+  }
+  .shell, .narrow { width: min(calc(100% - 2rem), var(--measure)); }
+  .nav-shell { width: 100%; }
+  .brand { font-size: 1rem; }
+  .nav-list { font-size: .75rem; }
+  .hero { padding-block: 2.7rem 4.3rem; }
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.72rem, 13.3vw, 4rem);
+    line-height: .98;
+    letter-spacing: -.045em;
+    overflow-wrap: anywhere;
+  }
+  .hero-subtitle { margin-top: .85rem; font-size: clamp(1.28rem, 6vw, 1.65rem); }
+  .hero-description { font-size: 1.08rem; line-height: 1.5; }
+  .actions { margin-top: 1.6rem; gap: .65rem; }
+  .button { min-height: 3.35rem; padding: .8rem 1rem; }
+  .book-figure { width: min(78vw, 18rem); }
+  .book-cover { box-shadow: .7rem .8rem 0 rgba(9,8,6,.86), 0 1.4rem 3rem rgba(0,0,0,.52); }
+  .book-figure figcaption { margin-top: 1.15rem; font-size: .7rem; }
+  .section { padding-block: 3.6rem; }
+  .section-head { margin-bottom: 2.25rem; }
+  h2 { font-size: clamp(2.05rem, 10.5vw, 3.2rem); }
+  h3 { line-height: 1.16; }
+  .lede { font-size: 1.17rem; line-height: 1.48; }
+  .split { gap: 2rem; }
+  .fact, .card, .part-card, .resource-card { padding: 1.4rem; }
+  .part-card { min-height: 0; }
+  .part-index { margin-bottom: 2rem; }
+  .part-card p { margin-top: 2rem; }
+  .concept-list > div { padding: 1.15rem 0; }
+  .concept-list dd, .reading-item p { font-size: .96rem; }
+  .name-list strong { font-size: 1.05rem; }
+  .reading-section { margin-bottom: 3.6rem; }
+  .reading-item { padding-block: 1.25rem; }
+  .source-link { display: inline-flex; min-height: 2.75rem; align-items: center; margin-top: .35rem; }
+  .resource-links a { min-height: 3.35rem; align-items: center; }
+  .notice, .editorial-note { font-size: .8rem; }
+  .page-hero { padding-block: 3.75rem; }
+  .page-hero h1 { font-size: clamp(2.75rem, 13vw, 4.2rem); overflow-wrap: anywhere; }
+  .toc a { min-height: 3rem; align-items: center; }
+  .footer-links { row-gap: .3rem; }
+  .footer-links a { display: inline-flex; min-height: 2.75rem; align-items: center; }
+}
+
+@media (max-width: 370px) {
+  .shell, .narrow { width: min(calc(100% - 1.5rem), var(--measure)); }
+  .hero h1 { font-size: 2.55rem; }
+  .book-figure { width: min(82vw, 17rem); }
+  .fact-grid, .card-grid, .part-grid, .resource-stack { margin-inline: 0; }
+}
+
+@media print {
+  body, .section, .section-soft, .cta-band, .site-footer { background: #fff; }
+}
