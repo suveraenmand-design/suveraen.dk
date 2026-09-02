@@ -41,24 +41,25 @@ Der skal ikke installeres Ruby, Node.js eller andre dependencies. Stop serveren 
 | Farver, typografi og responsivt design | `assets/css/main.css` |
 | Bogforside | `assets/images/book-cover.webp` |
 | Social delingsgrafik | `assets/images/social-card.webp` |
+| Leviathan-baggrund | `assets/images/leviathan-bg.webp` |
 | Favicon | `assets/images/favicon.svg` |
 | Titler, descriptions, canonical og Open Graph | `<head>` i hver HTML-fil |
 | Søgemaskiners sider | `sitemap.xml` og `robots.txt` |
 | Custom domain | `CNAME` |
 
-### Udskift bogforsiden
+### Bogforside og baggrund
 
-Den nuværende `assets/images/book-cover.webp` er en original pladsholder, fordi SHOP21-siden ikke viser en eksplicit licens til at genudgive den officielle forside.
+Den officielle forside er leveret og godkendt til projektet af bogprojektets ejer. Den weboptimerede fil ligger som `assets/images/book-cover.webp`. En beskåret, monokrom afledning af Leviathan-motivet ligger i `assets/images/leviathan-bg.webp` og bruges som diskret hero- og sektionsbaggrund.
 
-Når rettighedshaveren har givet tilladelse:
+Ved en senere udskiftning:
 
-1. eksportér forsiden som WebP i cirka 900 × 1350 px (samme billedforhold),
-2. optimér filen til web,
-3. erstat `assets/images/book-cover.webp` uden at ændre filnavnet,
-4. ret billedets `alt`-tekst og fjern pladsholderteksten i `index.html`,
+1. eksportér den godkendte forside som WebP i omtrent samme billedforhold,
+2. optimér filen og erstat `assets/images/book-cover.webp`,
+3. opdatér eventuelt `assets/images/leviathan-bg.webp`,
+4. ret filernes mål og billedets `alt`-tekst i `index.html`,
 5. commit og push ændringen.
 
-Genbrug ikke SHOP21s billedfil alene fordi URL’en er offentlig; indhent brugsret først.
+Kildemanuskriptet/PDF’en er ophavsretligt beskyttet og versionsstyres ikke i dette offentlige repository. Webteksterne er korte redaktionelle parafraser, ikke boguddrag.
 
 ## Test før push
 

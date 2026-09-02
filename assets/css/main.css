@@ -323,3 +323,116 @@ p { margin-block: 0 1.2em; }
   .section { padding-block: 2rem; }
   a { color: inherit; }
 }
+/* Leviathan-derived atmosphere and book-structure components */
+.hero-leviathan {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, var(--paper) 0%, rgba(18,17,15,.96) 42%, rgba(18,17,15,.77) 100%),
+    url('/assets/images/leviathan-bg.webp') right center / min(61rem, 78vw) auto no-repeat;
+}
+.hero-leviathan::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, var(--paper) 0, transparent 18%, transparent 76%, var(--paper) 100%),
+    repeating-linear-gradient(0deg, transparent 0 5px, rgba(241,236,226,.016) 5px 6px);
+  pointer-events: none;
+}
+.hero-leviathan::after {
+  content: "LEVIATHAN / KODE / SUVERÆNITET";
+  position: absolute;
+  z-index: -1;
+  right: max(1rem, calc((100vw - var(--measure)) / 2));
+  bottom: 1rem;
+  color: rgba(241,236,226,.28);
+  font-family: var(--mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+}
+.hero-leviathan .book-cover {
+  border: 1px solid rgba(241,236,226,.2);
+  box-shadow: 1.15rem 1.25rem 0 rgba(9,8,6,.86), 0 2rem 5rem rgba(0,0,0,.58);
+}
+.book-map { position: relative; overflow: hidden; }
+.book-map::after {
+  content: "κρυπτός";
+  position: absolute;
+  z-index: -1;
+  right: -0.08em;
+  top: -.2em;
+  color: rgba(241,236,226,.025);
+  font-size: clamp(9rem, 27vw, 27rem);
+  line-height: 1;
+}
+.part-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  background: var(--line);
+  gap: 1px;
+}
+.part-card {
+  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.6rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--paper), transparent 2%);
+}
+.part-card h3 { max-width: 13ch; margin-bottom: 1.2rem; }
+.part-card p { margin: auto 0 0; color: var(--ink-soft); }
+.part-index {
+  display: block;
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+  color: var(--accent-light);
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.editorial-note {
+  max-width: 58rem;
+  margin: 2rem 0 0;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--accent);
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: .82rem;
+  line-height: 1.65;
+}
+.editorial-note strong { color: var(--ink); }
+.concept-list { margin: 0; }
+.concept-list > div {
+  display: grid;
+  grid-template-columns: minmax(9rem, .62fr) minmax(0, 1.38fr);
+  gap: clamp(1rem, 4vw, 3rem);
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--line);
+}
+.concept-list > div:last-child { border-bottom: 1px solid var(--line); }
+.concept-list dt { color: var(--ink); font-size: 1.12rem; font-weight: 600; }
+.concept-list dd { margin: 0; color: var(--ink-soft); font-size: .98rem; line-height: 1.62; }
+.author-section {
+  background:
+    linear-gradient(90deg, var(--paper) 0%, rgba(18,17,15,.94) 100%),
+    url('/assets/images/leviathan-bg.webp') right center / 58rem auto no-repeat;
+}
+@media (max-width: 860px) {
+  .hero-leviathan {
+    background:
+      linear-gradient(180deg, rgba(18,17,15,.97) 0%, rgba(18,17,15,.91) 48%, rgba(18,17,15,.73) 100%),
+      url('/assets/images/leviathan-bg.webp') center bottom / auto 65% no-repeat;
+  }
+  .part-grid { grid-template-columns: 1fr; }
+  .part-card { min-height: 16rem; }
+  .part-index { margin-bottom: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .hero-leviathan::after { display: none; }
+  .concept-list > div { grid-template-columns: 1fr; gap: .45rem; }
+}
+@media print {
+  .hero-leviathan, .author-section { background: none; }
+}

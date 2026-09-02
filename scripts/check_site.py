@@ -62,7 +62,7 @@ for file in html:
   if href.startswith(('http://','https://')): external.add(href); continue
   t=target(href)
   if t and not t.exists(): ERRORS.append(f'{rel}: broken internal link {href}')
-for path in ('404.html','robots.txt','sitemap.xml','CNAME','assets/images/favicon.svg','assets/images/social-card.webp','assets/images/book-cover.webp'):
+for path in ('404.html','robots.txt','sitemap.xml','CNAME','assets/images/favicon.svg','assets/images/social-card.webp','assets/images/book-cover.webp','assets/images/leviathan-bg.webp'):
  if not (ROOT/path).exists(): ERRORS.append(f'Missing required file: {path}')
 if (ROOT/'CNAME').read_text().strip()!='xn--suvern-tua.dk': ERRORS.append('CNAME must use punycode apex')
 sitemap=(ROOT/'sitemap.xml').read_text()
