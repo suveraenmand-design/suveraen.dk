@@ -69,6 +69,9 @@ for file in html:
   if href.startswith(('http://','https://')): external.add(href); continue
   t=target(href)
   if t and not t.exists(): ERRORS.append(f'{rel}: broken internal link {href}')
+  elif t and urlparse(href).fragment and t.suffix=='.html':
+   destination=t.read_text(encoding='utf-8'); fragment=urlparse(href).fragment
+   if not re.search(r'''\bid=["']'''+re.escape(fragment)+r'''["']''',destination): ERRORS.append(f'{rel}: missing fragment target {href}')
 for path in ('404.html','robots.txt','sitemap.xml','CNAME','assets/images/favicon.svg','assets/images/social-card.webp','assets/images/9788785340085.jpg','assets/images/background.png','assets/images/book-cover.webp','assets/images/book-cover-640.webp','assets/images/background.webp','assets/images/background-mobile.webp','assets/images/leviathan-bg.webp'):
  if not (ROOT/path).exists(): ERRORS.append(f'Missing required file: {path}')
 if (ROOT/'CNAME').read_text().strip()!='xn--suvern-tua.dk': ERRORS.append('CNAME must use punycode apex')
