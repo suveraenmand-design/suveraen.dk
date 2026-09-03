@@ -600,3 +600,29 @@ body {
 @media print {
   body, .section, .section-soft, .cta-band, .site-footer { background: #fff; }
 }
+
+.hero h1 {
+    max-width: 11ch;
+    margin: 0;
+
+    font-size: clamp(3.8rem, 6.65vw, 5.985rem);
+    line-height: 0.92;
+    letter-spacing: 0.015em;
+
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        max-width: 100%;
+        font-size: clamp(2.47rem, 10.925vw, 3.23rem);
+        line-height: 0.94;
+        letter-spacing: 0.02em;
+
+        overflow-wrap: normal;
+        word-break: normal;
+        hyphens: manual;
+    }
+  }
