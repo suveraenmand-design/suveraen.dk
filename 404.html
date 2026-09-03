@@ -1,1 +1,22 @@
-<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Siden blev ikke fundet – Kryptosuverænitet</title><meta name="description" content="Den ønskede side blev ikke fundet."><meta name="robots" content="noindex"><meta name="theme-color" content="#12110f"><link rel="stylesheet" href="/assets/css/main.css"><link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml"></head><body><a class="skip-link" href="#indhold">Gå til indhold</a><header class="site-header"><nav class="nav-shell" aria-label="Primær navigation"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">⌁</span>Kryptosuverænitet</a><ul class="nav-list"><li><a href="/">Forside</a></li><li><a href="/om-bogen/">Om bogen</a></li><li><a href="/laeseliste/">Læseliste</a></li><li><a href="/ressourcer/">Ressourcer</a></li><li><a class="buy-link" href="https://shop21.dk/vare/kryptosuveraenitet-bitcoins-krypterede-politiske-filosofi/">Køb bogen</a></li></ul></nav></header><main id="indhold" class="error-page"><div class="shell"><p class="error-code">FEJL / 404</p><h1>Intet her.</h1><p>Adressen peger ikke på en side. Gå tilbage til forsiden eller fortsæt til læselisten.</p><div class="actions" style="justify-content:center"><a class="button button-primary" href="/">Gå til forsiden</a><a class="button button-secondary" href="/laeseliste/">Åbn læselisten</a></div></div></main></body></html>
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Siden blev ikke fundet – Kryptosuverænitet</title><meta name="description" content="Den ønskede side blev ikke fundet."><meta name="robots" content="noindex"><meta name="theme-color" content="#12110f"><link rel="stylesheet" href="/assets/css/main.css"><link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml"></head><body><a class="skip-link" href="#indhold">Gå til indhold</a><header class="site-header"><nav class="nav-shell" aria-label="Primær navigation">
+    <div class="nav-bar"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">⌁</span>Kryptosuverænitet</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span></button>
+    </div><ul class="nav-list" id="primary-menu"><li><a href="/">Forside</a></li><li><a href="/om-bogen/">Om bogen</a></li><li><a href="/laeseliste/">Læseliste</a></li><li><a href="/ressourcer/">Ressourcer</a></li><li><a class="buy-link" href="https://shop21.dk/vare/kryptosuveraenitet-bitcoins-krypterede-politiske-filosofi/">Køb bogen</a></li></ul></nav></header><main id="indhold" class="error-page"><div class="shell"><p class="error-code">FEJL / 404</p><h1>Intet her.</h1><p>Adressen peger ikke på en side. Gå tilbage til forsiden eller fortsæt til læselisten.</p><div class="actions" style="justify-content:center"><a class="button button-primary" href="/">Gå til forsiden</a><a class="button button-secondary" href="/laeseliste/">Åbn læselisten</a></div></div></main><script>
+  document.documentElement.classList.add('js');
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('primary-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('is-open', !open);
+    });
+    menu.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
+      }
+    });
+  }
+</script>
+</body></html>

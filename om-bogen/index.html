@@ -28,8 +28,11 @@
 <a class="skip-link" href="#indhold">Gå til indhold</a>
 <header class="site-header">
   <nav class="nav-shell" aria-label="Primær navigation">
+    <div class="nav-bar">
     <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">⌁</span>Kryptosuverænitet</a>
-    <ul class="nav-list">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span></button>
+    </div>
+    <ul class="nav-list" id="primary-menu">
       <li><a href="/">Forside</a></li>
       <li><a aria-current="page" href="/om-bogen/">Om bogen</a></li>
       <li><a href="/laeseliste/">Læseliste</a></li>
@@ -57,5 +60,23 @@
     </ul>
   </div>
 </footer>
+<script>
+  document.documentElement.classList.add('js');
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('primary-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('is-open', !open);
+    });
+    menu.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
+      }
+    });
+  }
+</script>
 </body>
 </html>

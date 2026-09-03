@@ -44,8 +44,11 @@
 <a class="skip-link" href="#indhold">Gå til indhold</a>
 <header class="site-header">
   <nav class="nav-shell" aria-label="Primær navigation">
+    <div class="nav-bar">
     <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">⌁</span>Kryptosuverænitet</a>
-    <ul class="nav-list">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span></button>
+    </div>
+    <ul class="nav-list" id="primary-menu">
       <li><a aria-current="page" href="/">Forside</a></li>
       <li><a href="/om-bogen/">Om bogen</a></li>
       <li><a href="/laeseliste/">Læseliste</a></li>
@@ -182,9 +185,9 @@
         <li><a href="https://cryptosovereignty.org/suggested-readings/">Suggested Readings <span class="external-mark" aria-hidden="true">↗</span></a></li>
         <li><a href="https://cryptosovereignty.org/cryptosovereignty/">Cryptosovereignty <span class="external-mark" aria-hidden="true">↗</span></a></li>
         <li><a href="https://cryptosovereignty.org/the-political-theology-of-crypto/">The Political Theology of Crypto <span class="external-mark" aria-hidden="true">↗</span></a></li>
-        <li><a href="https://cryptosovereignty.org/the-pedagogy-of-bitcoin/">The Pedagogy of Bitcoin <span class="external-mark" aria-hidden="true">↗</span></a></li>
-        <li><a href="https://cryptosovereignty.org/bitcoin-and-the-state-of-emergency/">Bitcoin and the State of Emergency <span class="external-mark" aria-hidden="true">↗</span></a></li>
-        <li><a href="https://cryptosovereignty.org/bitcoin-and-the-conquest-of-privacy/">Bitcoin and the Conquest of Privacy <span class="external-mark" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://cryptosovereignty.org/pedagogy-bitcoin/">The Pedagogy of Bitcoin <span class="external-mark" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://cryptosovereignty.org/emergency-of-cryptography/">The Emergency of Cryptography <span class="external-mark" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://www.citadel21.com/bitcoin-and-the-conquest-of-privacy">Bitcoin and the Conquest of Privacy <span class="external-mark" aria-hidden="true">↗</span></a></li>
       </ul>
     </div>
   </section>
@@ -209,5 +212,23 @@
     </ul>
   </div>
 </footer>
+<script>
+  document.documentElement.classList.add('js');
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('primary-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('is-open', !open);
+    });
+    menu.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
+      }
+    });
+  }
+</script>
 </body>
 </html>

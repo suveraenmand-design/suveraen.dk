@@ -9,11 +9,14 @@ ROOT=Path(__file__).resolve().parents[1]; EXCLUDED={'.git','_site','vendor'}
 EXPECTED={'/','/om-bogen/','/laeseliste/','/ressourcer/'}; ERRORS=[]; WARNINGS=[]
 class P(HTMLParser):
  def __init__(self):
-  super().__init__(); self.links=[]; self.images=[]; self.canonicals=[]; self.headings=[]; self.lang=None; self.title=False; self.title_text=''; self.metas={}
+  super().__init__(); self.links=[]; self.images=[]; self.canonicals=[]; self.headings=[]; self.lang=None; self.title=False; self.title_text=''; self.metas={}; self.ids=[]; self.fragments=[]
  def handle_starttag(self,tag,attrs):
   d=dict(attrs)
   if tag=='html': self.lang=d.get('lang')
-  if tag=='a' and d.get('href'): self.links.append(d['href'])
+  if d.get('id'): self.ids.append(d['id'])
+  if tag=='a' and d.get('href'):
+   self.links.append(d['href'])
+   if d['href'].startswith('#'): self.fragments.append(d['href'][1:])
   if tag=='img' and d.get('src'): self.images.append((d['src'],d.get('alt')))
   if tag=='link' and d.get('rel')=='canonical' and d.get('href'): self.canonicals.append(d['href'])
   if tag in {f'h{i}' for i in range(1,7)}: self.headings.append(int(tag[1]))
@@ -50,6 +53,10 @@ for file in html:
   if p.canonicals!=[canonical]: ERRORS.append(f'{rel}: canonical should be {canonical}')
   for key in ('og:title','og:description','og:url','og:image','twitter:card'):
    if key not in p.metas: ERRORS.append(f'{rel}: missing {key}')
+ raw=file.read_text(encoding='utf-8')
+ if raw.count('id="primary-menu"')!=1: ERRORS.append(f'{rel}: expected one primary-menu id')
+ if raw.count('class="nav-toggle"')!=1: ERRORS.append(f'{rel}: expected one nav toggle')
+ if 'aria-controls="primary-menu"' not in raw or 'aria-expanded="false"' not in raw: ERRORS.append(f'{rel}: invalid nav toggle ARIA')
  if not p.headings or p.headings[0]!=1: ERRORS.append(f'{rel}: first heading must be h1')
  if p.headings.count(1)!=1: ERRORS.append(f'{rel}: expected exactly one h1')
  for before,after in zip(p.headings,p.headings[1:]):
